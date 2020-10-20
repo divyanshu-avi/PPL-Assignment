@@ -1,0 +1,35 @@
+funDec program() { statementList }
+statementList statementList statement
+statementList ε
+Statement varDeclaration
+Statement Assignment 
+varDeclaration Expression1 : Expression2
+Expression1 declare id
+Expression1 declare list of variables name
+name id, id name2
+name2 , id name2
+name2 ε
+Expression2 integer
+Expression2 boolean
+Expression2 ExpArray
+Expression2 ExpJagged
+ExpArray array dims of integer
+dims [ digit .. digit ] dims
+dims ε
+ExpJagged [ digit .. digit ] [ ] [ ]
+ExpJagged [ digit .. digit ] [ digit .. digit] [ ] 
+Assignment LeftExp = RightExp
+LeftExp id
+LeftExp id [ Numbers ]  	
+Numbers Numbers digit
+Numbers ε                             	
+RightExp RightExp ‘|’ andExp
+RightExp andExp
+andExp andExp ‘&’ sumExp
+andExp sumExp
+sumExp sumExp sumOp mulExp
+sumExp mulExp
+sumOp + | -
+mulExp mulExp mulOp var
+mulOp * | /
+var LeftExp | digit | true | false
