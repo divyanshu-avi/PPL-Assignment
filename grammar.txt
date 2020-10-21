@@ -3,41 +3,43 @@ statementList statement statementList
 statementList e
 Statement varDeclaration
 Statement Assignment 
-varDeclaration Expression1 : Expression2
+varDeclaration Expression1 : Expression2 
 Expression1 declare id
 Expression1 declare list of variables name
-name id, id name2
-name2 , id name2
-name2 e
-Expression2 integer
-Expression2 boolean
+name id , name
+name id 
+Expression2 integer ;
+Expression2 boolean ; 
 Expression2 ExpArray
 Expression2 ExpJagged
-ExpArray array dims of integer
-dims [ digit .. digit ] dims
-dims e
+ExpArray array dims of integer ;
+dims [ var_ind .. var_ind ] dims
+dims [ var_ind .. var_ind ]
+var_ind id 
+var_ind digit
 ExpJagged jagged array [ digit .. digit ] [ ] [ ] of integer ; populate
 
 ExpJagged jagged array [ digit .. digit ] [ digit .. digit] [ ] of integer ; populate
 populate R1 [ digit ] : size digit : values vals populate
 vals { val_ext }
 val_ext nex ; val_ext 
-val_ext e
+val_ext nex
 nex digit nex
-nex e
+nex digit
 
-Assignment LeftExp = RightExp
+Assignment LeftExp = RightExp ;
 LeftExp id
 LeftExp id [ Numbers ]  	
 Numbers Numbers digit
-Numbers e                            	
-RightExp RightExp ‘|’ andExp
+Numbers digit                          	
+RightExp RightExp ‘|||’ andExp
 RightExp andExp
-andExp andExp ‘&’ sumExp
+andExp andExp ‘&&&’ sumExp
 andExp sumExp
 sumExp sumExp sumOp mulExp
 sumExp mulExp
 sumOp + | -
 mulExp mulExp mulOp var
+mulExp var
 mulOp * | /
-var LeftExp | digit | true | false
+var LeftExp | digit
