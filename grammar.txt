@@ -3,7 +3,7 @@ statementList statement statementList
 statementList e
 Statement varDeclaration
 Statement Assignment 
-varDeclaration Expression1 : Expression2 
+varDeclaration Expression1 : Expression2
 Expression1 declare id
 Expression1 declare list of variables name
 name id , name
