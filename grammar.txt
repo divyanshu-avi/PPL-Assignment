@@ -1,15 +1,15 @@
 funDec program() { statementList }
-statementList statement statementList 
+statementList statement statementList
 statementList e
 Statement varDeclaration
-Statement Assignment 
+Statement Assignment
 varDeclaration Expression1 : Expression2
 Expression1 declare id
 Expression1 declare list of variables name
 name id , name
-name id 
+name id
 Expression2 integer ;
-Expression2 boolean ; 
+Expression2 boolean ;
 Expression2 ExpArray
 Expression2 ExpJagged
 ExpArray array dims of integer ;
@@ -18,20 +18,18 @@ dims [ var_ind .. var_ind ]
 var_ind id 
 var_ind digit
 ExpJagged jagged array [ digit .. digit ] [ ] [ ] of integer ; populate
-
 ExpJagged jagged array [ digit .. digit ] [ digit .. digit] [ ] of integer ; populate
 populate R1 [ digit ] : size digit : values vals populate
 vals { val_ext }
-val_ext nex ; val_ext 
+val_ext nex ; val_ext
 val_ext nex
 nex digit nex
 nex digit
-
 Assignment LeftExp = RightExp ;
 LeftExp id
-LeftExp id [ Numbers ]  	
+LeftExp id [ Numbers ]
 Numbers Numbers digit
-Numbers digit                          	
+Numbers digit
 RightExp RightExp ‘|||’ andExp
 RightExp andExp
 andExp andExp ‘&&&’ sumExp
