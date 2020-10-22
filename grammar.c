@@ -69,7 +69,7 @@ grammar readGrammar(const char* source)
     fp = fopen("grammar.txt", "r");
     while(fgets(buffer, line_size, fp))
     {
-        token = strtok(strtok(buffer, "\n"), " ");
+        token = strtok(strtok(buffer, "\n"), " ");//Remove \n from buffer
         G.rules[count] = (node*)malloc(sizeof(node));
         temp = G.rules[count];
         temp->next = NULL;

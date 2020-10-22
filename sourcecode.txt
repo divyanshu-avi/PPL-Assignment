@@ -1,0 +1,5 @@
+program()
+{
+declare v1 : int ;
+v1 = 5 ;
+}
