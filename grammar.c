@@ -2,7 +2,7 @@
 #include<string.h>
 #include<stdlib.h>
 #include<stdbool.h>
-#define line_size 60//Max size of a line in grammar.txt
+#define line_size 100//Max size of a line in grammar.txt
 #define id_len 25//max size of identifier
 typedef struct edon
 {
@@ -70,7 +70,6 @@ grammar readGrammar(const char* source)
     while(fgets(buffer, line_size, fp))
     {
         token = strtok(strtok(buffer, "\n"), " ");
-        count++;
         G.rules[count] = (node*)malloc(sizeof(node));
         temp = G.rules[count];
         temp->next = NULL;
@@ -84,6 +83,7 @@ grammar readGrammar(const char* source)
             temp->next = new_node;
             temp = new_node;
         }
+        count++;
     }
     fclose(fp);
     //Now we need to set the terminal field for all nodes except those present in the array
