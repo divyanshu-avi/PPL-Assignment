@@ -29,7 +29,7 @@ tokenStream* tokeniseSourcecode(const char *src)
     while(fgets(buffer, line_size, fp))
     {
         word = strtok(strtok(buffer, "\n"), " ");//Removing \n from buffer
-        printf("%s|", word);
+        //printf("%s|", word);
         new_node = (tokenStream*)malloc(sizeof(tokenStream));
         new_node->next = NULL;
         strcpy(new_node->lexeme, word);
@@ -46,7 +46,7 @@ tokenStream* tokeniseSourcecode(const char *src)
         }
         while(word = strtok(NULL, " "))
         {
-            printf("%s|", word);
+            //printf("%s|", word);
             new_node = (tokenStream*)malloc(sizeof(tokenStream));
             new_node->next = NULL;
             strcpy(new_node->lexeme, word);
