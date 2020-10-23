@@ -30,14 +30,17 @@ LeftExp id
 LeftExp id [ Numbers ]
 Numbers Numbers digit
 Numbers digit
-RightExp RightExp ‘|||’ andExp
+RightExp RightExp ||| andExp
 RightExp andExp
-andExp andExp ‘&&&’ sumExp
+andExp andExp &&& sumExp
 andExp sumExp
 sumExp sumExp sumOp mulExp
 sumExp mulExp
-sumOp + | -
+sumOp +
+sumOp -
 mulExp mulExp mulOp var
 mulExp var
-mulOp * | /
-var LeftExp | digit
+mulOp *
+mulOp /
+var LeftExp
+var digit
