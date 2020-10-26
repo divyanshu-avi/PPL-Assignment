@@ -16,6 +16,43 @@ typedef struct tok
     struct tok* next;
 }tokenStream;
 
+char** populateKeywords(char *src)
+{
+    char **keywords = (char**)malloc(sizeof(char*)*no_of_key);
+    char buffer[key_size];
+    FILE *fp = fopen(src, "r");
+    if(!fp)
+    {
+        printf("Failed to open %s. Please check if the file exists.\n", src);
+        return keywords;
+    }
+    for(int i = 0;i<no_of_key; i++)
+    {
+        fgets(buffer, key_size, fp);
+        keywords[i] = (char*)malloc(sizeof(char)*no_of_key);
+        strcpy(keywords[i], strtok(buffer, "\n"));
+    }
+    return keywords;
+}
+
+void setTokens(tokenStream *s, char **keywords)
+{
+    int i;
+    while(s)
+    {
+        for(i=0;i<no_of_key;i++)
+            if(!strcmp(s->lexeme, keywords[i]))
+                break;
+        if(i<no_of_key)
+            s->token = key;
+        else if(isdigit(s->lexeme[0]))
+            s->token = num;
+        else
+            s->token = id;
+        s = s->next;
+    }
+}
+
 tokenStream* tokeniseSourcecode(const char *src)
 {
     char buffer[line_size];
@@ -60,6 +97,8 @@ tokenStream* tokeniseSourcecode(const char *src)
         lnum++;
     }
     printf("Total %d lines read.\n", lnum-1);
+    char **keywords = populateKeywords("keywords_terminal.txt");
+    setTokens(head, keywords);
     return head;
 }
 
@@ -72,48 +111,9 @@ void printTokenStream(tokenStream *s)
     }
 }
 
-char** populateKeywords(char *src)
-{
-    char **keywords = (char**)malloc(sizeof(char*)*no_of_key);
-    char buffer[key_size];
-    FILE *fp = fopen(src, "r");
-    if(!fp)
-    {
-        printf("Failed to open %s. Please check if the file exists.\n", src);
-        return keywords;
-    }
-    for(int i = 0;i<no_of_key; i++)
-    {
-        fgets(buffer, key_size, fp);
-        keywords[i] = (char*)malloc(sizeof(char)*no_of_key);
-        strcpy(keywords[i], strtok(buffer, "\n"));
-    }
-    return keywords;
-}
-
-void setTokens(tokenStream *s, char **keywords)
-{
-    int i;
-    while(s)
-    {
-        for(i=0;i<no_of_key;i++)
-            if(!strcmp(s->lexeme, keywords[i]))
-                break;
-        if(i<no_of_key)
-            s->token = key;
-        else if(isdigit(s->lexeme[0]))
-            s->token = num;
-        else
-            s->token = id;
-        s = s->next;
-    }
-}
-
-int main()
+/*int main()
 {
     tokenStream *s = tokeniseSourcecode("sourcecode.txt");
-    char **keywords = populateKeywords("keywords_terminal.txt");
-    setTokens(s, keywords);
     printTokenStream(s);
     return 0;
-}
+}*/

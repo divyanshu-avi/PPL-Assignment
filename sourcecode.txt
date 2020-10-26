@@ -1,5 +1,4 @@
 program()
 {
-declare v1 : int ;
-v1 = 5 ;
+declare v1 : integer ;
 }

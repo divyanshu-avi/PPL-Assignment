@@ -11,11 +11,11 @@ of
 variables
 ,
 ;
-integer 
-boolean 
+integer
+boolean
 array
-of 
-[ 
+of
+[
 ..
 ]
 jagged

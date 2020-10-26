@@ -34,8 +34,8 @@ void printGrammar(grammar G)
         node *temp = G.rules[i]->next;
         while(temp)
         {
-            //printf("%s %d ", temp->str, temp->terminal);
-            printf("%s ", temp->str);//Uncomment above and comment this to check terminal/non-terminal values
+            printf("%s(%d) ", temp->str, temp->terminal);
+            //printf("%s ", temp->str);//Uncomment above and comment this to check terminal/non-terminal values
             temp = temp->next;
         }
         printf("\n");
@@ -99,11 +99,11 @@ grammar readGrammar(const char* source)
     return G;
 }
 
-int main()
+/*int main()
 {
     grammar G = readGrammar("grammar.txt");
     if(G.size == 0)
         return 1;
     printGrammar(G);
     return 0;
-}
+}*/
