@@ -1,4 +1,5 @@
 program()
 {
 declare v1 : integer ;
+v1 = 5 ;
 }
