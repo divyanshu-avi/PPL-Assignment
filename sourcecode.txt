@@ -1,5 +1,4 @@
 program()
 {
-declare v1 : integer ;
-v1 = 5 ;
+    abcd [ 4 ] = ghd2_1 [ 5 ] + ssd_2_3 [ 2 ] ;
 }

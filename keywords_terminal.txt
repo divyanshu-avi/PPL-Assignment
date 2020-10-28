@@ -1,4 +1,5 @@
 program()
+program
 (
 )
 {
@@ -13,6 +14,7 @@ variables
 ;
 integer
 boolean
+real
 array
 of
 [

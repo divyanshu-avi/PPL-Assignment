@@ -2,7 +2,7 @@
 #include<string.h>
 #include<stdlib.h>
 #include<stdbool.h>
-#define line_size 100//Max size of a line in grammar.txt
+#define line_size 200//Max size of a line in grammar.txt
 #define id_len 25//max size of identifier
 typedef struct edon
 {

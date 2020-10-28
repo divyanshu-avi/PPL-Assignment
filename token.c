@@ -4,8 +4,8 @@
 #include<stdbool.h>
 #include<ctype.h>
 #define id_len 25
-#define line_size 100
-#define no_of_key 32//Number of keywords
+#define line_size 200
+#define no_of_key 34//Number of keywords
 #define key_size 11//max size of a keyword
 
 typedef struct tok
@@ -68,7 +68,7 @@ tokenStream* tokeniseSourcecode(const char *src)
     }
     while(fgets(buffer, line_size, fp))
     {
-        word = strtok(strtok(buffer, "\n"), " ");//Removing \n from buffer
+        word = strtok(buffer, " \t\n");
         //printf("%s|", word);
         new_node = (tokenStream*)malloc(sizeof(tokenStream));
         new_node->next = NULL;
@@ -84,7 +84,7 @@ tokenStream* tokeniseSourcecode(const char *src)
             tail->next = new_node;
             tail = new_node;
         }
-        while(word = strtok(NULL, " "))
+        while(word = strtok(NULL, " \t\n"))
         {
             //printf("%s|", word);
             new_node = (tokenStream*)malloc(sizeof(tokenStream));
@@ -113,7 +113,7 @@ void printTokenStream(tokenStream *s)
 
 /*int main()
 {
-    tokenStream *s = tokeniseSourcecode("sourcecode.txt");
+    tokenStream *s = tokeniseSourcecode("testcases/t1.txt");
     printTokenStream(s);
     return 0;
 }*/

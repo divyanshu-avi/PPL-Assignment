@@ -1,4 +1,5 @@
 funDec program() { statementList }
+funDec program ( ) { statementList }
 statementList Statement statementList
 statementList e
 Statement varDeclaration
@@ -6,10 +7,11 @@ Statement Assignment
 varDeclaration Expression1 : Expression2
 Expression1 declare id
 Expression1 declare list of variables name
-name id , name
+name id name
 name id
 Expression2 integer ;
 Expression2 boolean ;
+Expression2 real ;
 Expression2 ExpArray
 Expression2 ExpJagged
 ExpArray array dims of integer ;
