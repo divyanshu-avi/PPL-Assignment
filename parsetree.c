@@ -135,7 +135,7 @@ void printParseTree(tree *root)
 
 int main()
 {
-    tokenStream *s = tokeniseSourcecode("sourcecode.txt");
+    tokenStream *s = tokeniseSourcecode("t6.txt");
     grammar G = readGrammar("grammar.txt");
     tree *root = newTreeNode(G.rules[0]->str, false, 0 ,0);
     bool flag = createParseTree(root, &s, G);

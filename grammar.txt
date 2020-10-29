@@ -19,18 +19,20 @@ dims [ var_ind .. var_ind ] dims
 dims [ var_ind .. var_ind ]
 var_ind id
 var_ind digit
+ExpJagged jagged array [ digit .. digit ] [ ] of integer ; populate
 ExpJagged jagged array [ digit .. digit ] [ ] [ ] of integer ; populate
 ExpJagged jagged array [ digit .. digit ] [ digit .. digit] [ ] of integer ; populate
 populate R1 [ digit ] : size digit : values vals populate
+populate R1 [ digit ] : size digit : values vals
 vals { val_ext }
 val_ext nex ; val_ext
 val_ext nex
 nex digit nex
 nex digit
 Assignment LeftExp = RightExp ;
-LeftExp id
 LeftExp id [ Numbers ]
-Numbers Numbers digit
+LeftExp id
+Numbers digit Numbers
 Numbers digit
 RightExp andExp ||| RightExp
 RightExp andExp
