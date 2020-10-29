@@ -143,7 +143,7 @@ void printParseTree(tree *root)
         printParseTree(root->children[i]);
 }
 
-int main(int argc, char *argv[])
+/*int main(int argc, char *argv[])
 {
     if(argc<2)
     {
@@ -179,4 +179,4 @@ int main(int argc, char *argv[])
     printf("Printing the parse tree\n\n");
     printf("%20s | %8s | %20s | %7s | %4s | %5s\n", "Symbol", "Terminal", "Lexeme", "Line No", "Rule", "Depth");
     printParseTree(root);
-}
+}*/

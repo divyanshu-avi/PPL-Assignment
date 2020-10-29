@@ -1,5 +1,3 @@
-#include"token.c"
-
 enum type{ integer, real, boolean, rectarr, jaggedarr};
 
 typedef struct tet
@@ -111,10 +109,10 @@ void printParseTable(tablenode *head)
     }
 }
 
-int main()
+/*int main()
 {
-    tokenStream *s = tokeniseSourcecode("t4.txt");
+    tokenStream *s = tokeniseSourcecode("t6.txt");
     tablenode *head = createParseTable(s);
     printParseTable(head);
     return 0;
-}
+}*/
