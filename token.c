@@ -69,6 +69,8 @@ tokenStream* tokeniseSourcecode(const char *src)
     while(fgets(buffer, line_size, fp))
     {
         word = strtok(buffer, " \t\n");
+        if(!word)
+            continue;//If more the 2 \ns occur word will be NULL
         //printf("%s|", word);
         new_node = (tokenStream*)malloc(sizeof(tokenStream));
         new_node->next = NULL;
