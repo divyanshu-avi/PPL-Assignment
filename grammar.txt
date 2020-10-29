@@ -1,7 +1,7 @@
 funDec program() { statementList }
 funDec program ( ) { statementList }
 statementList Statement statementList
-statementList e
+statementList Statement
 Statement varDeclaration
 Statement Assignment
 varDeclaration Expression1 : Expression2
