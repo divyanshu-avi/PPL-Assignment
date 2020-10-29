@@ -79,8 +79,9 @@ int main(int argc, char *argv[])
                             printf("\033[0m");
                         }
                         printf("Printing the parse tree\n\n");
-                        printf("%20s | %8s | %20s | %7s | %4s | %5s\n", "Symbol", "Terminal", "Lexeme", "Line No", "Rule", "Depth");
+                        printf("%20s | %8s | %20s | %7s | %4s | %5s\n", "Symbol", "Terminal", "Lexeme", "Line No", "Rule", "Depth\n");
                         printParseTree(root);
+                        printf("\n%20s | %8s | %20s | %7s | %4s | %5s\n", "Symbol", "Terminal", "Lexeme", "Line No", "Rule", "Depth");
                         break;
             case 4 :    if(!head)
                         {

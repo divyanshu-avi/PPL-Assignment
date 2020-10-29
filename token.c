@@ -100,7 +100,9 @@ tokenStream* tokeniseSourcecode(const char *src)
         }
         lnum++;
     }
+    printf("\033[0;32m");
     printf("%d lines read from %s.\n", lnum-1, src);
+    printf("\033[0m");
     char **keywords = populateKeywords("keywords_terminal.txt");
     setTokens(head, keywords);
     return head;
