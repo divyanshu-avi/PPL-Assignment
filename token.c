@@ -63,8 +63,10 @@ tokenStream* tokeniseSourcecode(const char *src)
     FILE *fp = fopen(src, "r");
     if(!fp)
     {
-        printf("Failed to open sourcecode.txt. Please check if the file exists.\n");
-        return head;
+        printf("\033[0;31m");;
+        printf("Failed to open %s. Please check if the file exists.\n", src);
+        printf("\033[0m");
+        return NULL;
     }
     while(fgets(buffer, line_size, fp))
     {
@@ -98,7 +100,7 @@ tokenStream* tokeniseSourcecode(const char *src)
         }
         lnum++;
     }
-    printf("Total %d lines read.\n", lnum-1);
+    printf("%d lines read from %s.\n", lnum-1, src);
     char **keywords = populateKeywords("keywords_terminal.txt");
     setTokens(head, keywords);
     return head;

@@ -14,6 +14,8 @@ typedef struct tnode
     bool is_terminal;
     int nofc;
     int depth;
+    char lexeme[id_len];
+    int rule;
 }tree;
 
 tree* newTreeNode(const char *str, bool is_terminal, int line_no, int depth)
@@ -28,6 +30,7 @@ tree* newTreeNode(const char *str, bool is_terminal, int line_no, int depth)
     root->line_no = line_no;
     root->nofc = 0;
     root->depth = depth;
+    strcpy(root->lexeme, "-");
     return root;
 }
 
@@ -40,8 +43,9 @@ bool createParseTree(tree *root, tokenStream **s, grammar G)
 
     if(root->is_terminal)
     {
-        if(!strcmp(root->str, "e"))//e means epsilon
+        if(!strcmp(root->str, "e"))//e means epsilon, although now we have removed epsilon from the grammar
         {
+            strcpy(root->lexeme, "epsilon");
             return true;
         }
         else if( ((*s)->token == key) && !strcmp((*s)->lexeme, root->str) )//keyword
@@ -49,6 +53,7 @@ bool createParseTree(tree *root, tokenStream **s, grammar G)
             //printf("\033[0;32m");
             //printf("Terminal %s matched with token %s el1\n", root->str, (*s)->lexeme);
             //printf("\033[0m");
+            strcpy(root->lexeme, (*s)->lexeme);
             *s = (*s)->next;
             return true;
         }
@@ -57,6 +62,7 @@ bool createParseTree(tree *root, tokenStream **s, grammar G)
             //printf("\033[0;32m");
             //printf("Terminal %s matched with token %s el2\n", root->str, (*s)->lexeme);
             //printf("\033[0m");
+            strcpy(root->lexeme, (*s)->lexeme);
             *s = (*s)->next;
             //printf("***%s***\n", (*s)->lexeme);
             return true;
@@ -66,6 +72,7 @@ bool createParseTree(tree *root, tokenStream **s, grammar G)
             //printf("\033[0;32m");
             //printf("Terminal %s matched with token %s el3\n", root->str, (*s)->lexeme);
             //printf("\033[0m");
+            strcpy(root->lexeme, (*s)->lexeme);
             *s = (*s)->next;
             return true;
         }
@@ -87,6 +94,7 @@ bool createParseTree(tree *root, tokenStream **s, grammar G)
         if(strcmp(root->str, G.rules[i]->str))//If doesn't match
             continue;
         root->nofc = 0;
+        root->rule = i+1;
         for(temp = G.rules[i]->next; temp ; temp = temp->next)//No of children required
             root->nofc++;
         root->children = (tree**)malloc(sizeof(tree*)*root->nofc);
@@ -127,15 +135,33 @@ void printParseTree(tree *root)
 {
     if(!root)
         return;
-    char *temp = root->is_terminal?"Yes":"No";
-    printf("%20s | %8s | %5d\n", root->str, temp, root->depth);
+    if(root->is_terminal)
+        printf("%20s | %8s | %20s | %7d | %4s | %5d\n", root->str, "Yes", root->lexeme, root->line_no, "-", root->depth);
+    else
+        printf("%20s | %8s | %20s | %7s | %4d | %5d\n", root->str, "No", root->lexeme, "-", root->rule, root->depth);
     for(int i = 0; i<root->nofc; i++)
         printParseTree(root->children[i]);
 }
 
-int main()
+int main(int argc, char *argv[])
 {
-    tokenStream *s = tokeniseSourcecode("t6.txt");
+    if(argc<2)
+    {
+        printf("\033[0;31m");
+        printf("Please provide sourcecode as a Command Line argument!\n");
+        printf("\033[0m");
+        return 1;
+    }
+    if(argc>2)
+    {
+        printf("\033[0;31m");
+        printf("Too many arguments!\n");
+        printf("\033[0m");
+        return 1;
+    }
+    tokenStream *s = tokeniseSourcecode(argv[1]);
+    if(!s)
+        return 1;
     grammar G = readGrammar("grammar.txt");
     tree *root = newTreeNode(G.rules[0]->str, false, 0 ,0);
     bool flag = createParseTree(root, &s, G);
@@ -151,6 +177,6 @@ int main()
     printf("\033[0m");
 
     printf("Printing the parse tree\n\n");
-    printf("%20s | %8s | %5s\n", "Symbol", "Terminal", "Depth");
+    printf("%20s | %8s | %20s | %7s | %4s | %5s\n", "Symbol", "Terminal", "Lexeme", "Line No", "Rule", "Depth");
     printParseTree(root);
 }
