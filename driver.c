@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     {
         printf("Option 0: Exit\n");
         printf("Option 1: Create parse tree\n");
-        printf("Option 2: Construct type expression table\n");
+        printf("Option 2: Construct type expression table and report errors\n");
         printf("Option 3: Print parse tree\n");
         printf("Option 4: Print type expression table\n");
         printf("Please enter your choice\n");
@@ -62,12 +62,12 @@ int main(int argc, char *argv[])
                         if(!head)
                         {
                             printf("\033[0;31m");
-                            printf("Something went horribly wrong while creating the parse table!\n");
+                            printf("Something went horribly wrong while creating the type expresssion table!\n");
                             printf("\033[0m");
                             return 1;
                         }
                         printf("\033[0;32m");
-                        printf("Parse table is created successfully!\n\n");
+                        printf("Type expression table is created successfully!\n\n");
                         printf("\033[0m");
                         errornode *errorHead = genarateErrors(s, head);
                         if(!errorHead)
@@ -109,12 +109,12 @@ int main(int argc, char *argv[])
                             if(!head)
                             {
                                 printf("\033[0;31m");
-                                printf("Something went horribly wrong while creating the parse table!\n");
+                                printf("Something went horribly wrong while creating the type expression table!\n");
                                 printf("\033[0m");
                                 return 1;
                             }
                             printf("\033[0;32m");
-                            printf("Parse table is created successfully!\n\n");
+                            printf("Type expression table is created successfully!\n\n");
                             printf("\033[0m");
                         }
                         printf("printing the type expression table\n\n");
