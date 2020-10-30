@@ -2,4 +2,6 @@ program ( )
 {
 	declare v1 : integer ;
 	v1 = 5 ;
+	v1 = v1 * 5 ;
+	v1 = v1 ||| 6 ;
 }

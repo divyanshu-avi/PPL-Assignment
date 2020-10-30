@@ -61,6 +61,18 @@ int main(int argc, char *argv[])
                         printf("\033[0;32m");
                         printf("Parse table is created successfully!\n\n");
                         printf("\033[0m");
+                        errornode *errorHead = genarateErrors(s, head);
+                        if(!errorHead)
+                        {
+                            printf("\033[0;31m");
+                            printf("Something went horribly wrong while finding errors!\n");
+                            printf("\033[0m");
+                            return 1;
+                        }
+                        printf("\nPrinting errors\n\n");
+                        printf("%4s | %14s | %8s | %20s | %13s | %20s | %13s\n", "Line", "Statement Type", "Operator", "Left Operand", "Type", "Right Operand", "Type");
+                        printErrors(errorHead);
+                        printf("%4s | %14s | %8s | %20s | %13s | %20s | %13s\n", "Line", "Statement Type", "Operator", "Left Operand", "Type", "Right Operand", "Type");
                         break;
             case 3 :    if(!root)
                         {
